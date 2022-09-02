@@ -7,9 +7,12 @@
   },
   "rules": {
     "semi": "off",
+    "indent": "off",
     "arrow-parens": "off",
     "object-curly-spacing": "off",
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "max-len": "off",
+    "space-before-blocks": "off"
   },
   "extends": [
     "eslint:recommended", "google"
