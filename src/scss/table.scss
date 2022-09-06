@@ -16,6 +16,7 @@
   }
 
   .row-info{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +26,26 @@
     background: #f8f9fa;
     border-top: none;
     border-left: none;
+
+    user-select: none;
+
+    .row-resize{
+      position: absolute;
+      bottom: 0;
+      z-index: 10;
+      background: $color-active;
+      height: 4px;
+      width: 100%;
+
+      opacity: 0;
+
+      user-select: auto;
+
+      &:hover{
+        opacity: 1;
+        cursor: row-resize;
+      }
+    }
   }
 
   .row-data{
@@ -32,6 +53,8 @@
   }
 
   .row-column{
+    position: relative;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,6 +66,27 @@
 
     min-width: 40px;
     width: $cell-min-width;
+
+    user-select: none;
+
+    .col-resize{
+      position: absolute;
+      height: 100%;
+      right: 0;
+      top: 0;
+      width: 4px;
+      background: $color-active;
+
+      z-index: 10;
+      opacity: 0;
+
+      user-select: auto;
+
+      &:hover{
+        opacity: 1;
+        cursor: col-resize;
+      }
+    }
   }
 
   .cell{
@@ -62,9 +106,9 @@
     outline: none;
 
     &.selected{
-      border-color: #5581F1;
-      border-top: 1px solid #5581F1;
-      border-left: 1px solid #5581F1;
+      border-color: $color-active;
+      border-top: 1px solid $color-active;
+      border-left: 1px solid $color-active;
       overflow: visible;
       z-index: 2;
 
@@ -73,7 +117,7 @@
 
         position: absolute;
 
-        background: #5581F1;
+        background: $color-active;
 
         width: 6px;
         height: 6px;
@@ -86,4 +130,29 @@
     }
   }
 
+  .col-line,
+  .row-line{
+    position: absolute;
+    top: 0;
+    display: inline-block;
+    background: $color-active;
+    opacity: 0;
+
+    user-select: none;
+  }
+
+  .row-line{
+    height: 3px;
+    width: 100%;
+  }
+
+  .col-line{
+    height: 100%;
+    width: 3px;
+  }
+
+  .row-line.active,
+  .col-line.active{
+    opacity: 1;
+  }
 }
