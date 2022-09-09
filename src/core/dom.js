@@ -69,10 +69,45 @@ class Dom{
         return this.$el.querySelectorAll(selector)
     }
 
+    querySelector(selector){
+        return $dev(this.$el.querySelector(selector))
+    }
+
+    id(parse){
+        if (parse){
+            const parsed = this.id().split('-')
+
+            return {
+                col: +parsed[0],
+                row: +parsed[1],
+            }
+        }
+
+        return this.dataset.id
+    }
+
     css(styles = {}){
         Object
             .keys(styles)
             .forEach(key => this.style[key] = styles[key])
+    }
+
+    text(content){
+        if (typeof content === 'string'){
+            this.$el.textContent = content
+            return this
+        }
+
+        if (this.$el.tagName.toLowerCase() === 'input') {
+            return this.$el.value.trim()
+        }
+
+        return this.$el.textContent.trim()
+    }
+
+    get focus(){
+        this.$el.focus()
+        return this
     }
 }
 

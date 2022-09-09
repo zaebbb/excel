@@ -10,7 +10,7 @@ const resize = (event, $root) => {
     if (resizeData === 'col') {
         col.addClass('active')
         col.style.left = event.pageX + 'px'
-    } else {
+    } else if (resizeData === 'row') {
         row.addClass('active')
         row.style.top = (event.pageY - 130) + 'px'
     }
