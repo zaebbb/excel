@@ -2,7 +2,6 @@ const CODES = {
     A: 65,
     Z: 90,
 }
-
 function createCell(row){
     return function(content, i){
         return `

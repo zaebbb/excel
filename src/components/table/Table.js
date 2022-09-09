@@ -19,7 +19,7 @@ export class Table extends ExcelComponent{
     toHTML(){
         return createTable(20)
     }
-
+    
     prepare(){
         this.selection = new TableSelection()
     }
@@ -39,7 +39,6 @@ export class Table extends ExcelComponent{
             this.selection.current.focus
         })
     }
-
     onMousedown(event){
         if (isResize(event)){
             resize(event, this.$root)
