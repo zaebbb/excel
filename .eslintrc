@@ -12,7 +12,9 @@
     "object-curly-spacing": "off",
     "require-jsdoc": "off",
     "max-len": "off",
-    "space-before-blocks": "off"
+    "space-before-blocks": "off",
+    "no-case-declarations":  "off",
+    "one-var": "off"
   },
   "extends": [
     "eslint:recommended", "google"
