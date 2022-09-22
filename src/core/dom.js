@@ -93,7 +93,7 @@ class Dom{
     }
 
     text(content){
-        if (typeof content === 'string'){
+        if (typeof content !== 'undefined'){
             this.$el.textContent = content
             return this
         }
@@ -108,6 +108,42 @@ class Dom{
     get focus(){
         this.$el.focus()
         return this
+    }
+
+    value(data){
+        if (data){
+            this.$el.value = data
+        }
+
+        return this.$el.value
+    }
+
+    selectedIndex(){
+        return this.$el.selectedIndex
+    }
+
+    get options(){
+        if (this.$el.tagName.toLowerCase() === 'select'){
+            return this.$el.options
+        }
+
+        return this
+    }
+
+
+    getStyles(styles = []){
+        return styles.reduce((res, s) => {
+            res[s] = this.$el.style[s]
+            return res
+        }, {})
+    }
+
+    attr(name, value){
+        if (value){
+            this.$el.setAttribute(name, value)
+            return this
+        }
+        return this.$el.getAttribute(name)
     }
 }
 

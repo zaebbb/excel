@@ -10,6 +10,7 @@
   padding: 7px 10px;
 
   display: flex;
+  align-items: center;
 
   height: $toolbar-height;
 
@@ -22,5 +23,32 @@
     height: 100%;
     margin-left: 3px;
     margin-right: 3px;
+  }
+
+  & .toolbar__input{
+    margin-left: 15px;
+    background: transparent;
+    border: none;
+
+    width: 30px;
+    height: 30px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  & .toolbar__select--size{
+    margin-left: 0;
+    font-size: 14px;
+    height: auto;
+    width: auto;
+    -webkit-appearance: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(1px);
+  }
+
+  & .type__size{
+    text-decoration: none !important;
   }
 }

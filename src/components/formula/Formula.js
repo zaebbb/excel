@@ -8,6 +8,7 @@ export class Formula extends ExcelComponent{
         super($root, {
             name: 'Formula',
             listeners: ['input', 'keydown'],
+            subscribe: ['currentText'],
             ...options,
         })
     }
@@ -17,8 +18,9 @@ export class Formula extends ExcelComponent{
 
         this.$formula = this.$root.querySelector(`[data-type="formula"]`)
 
-        this.$on('table:input', data => {
-            this.$formula.text(data)
+        this.$on('table:input', $cell => {
+            // console.log($cell)
+            this.$formula.text($cell.dataset.value)
         })
     }
 
@@ -30,7 +32,8 @@ export class Formula extends ExcelComponent{
     }
 
     onInput(e){
-        this.$emit('formula:text', $dev(e.target).text())
+        const text = $dev(e.target).text()
+        this.$emit('formula:text', text)
     }
 
     onKeydown(event){
@@ -40,5 +43,9 @@ export class Formula extends ExcelComponent{
         } else if (event.key === 'Tab'){
             event.preventDefault()
         }
+    }
+
+    storeChange({currentText}){
+        this.$formula.text(currentText)
     }
 }

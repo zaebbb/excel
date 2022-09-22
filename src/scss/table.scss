@@ -11,7 +11,7 @@
   .row{
     display: flex;
     flex-direction: row;
-    min-height: 20px;
+    min-height: 24px !important;
     height: $row-height;
   }
 
