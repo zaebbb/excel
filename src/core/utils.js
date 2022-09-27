@@ -50,3 +50,15 @@ export function debounce(fn, time){
         timeout = setTimeout(later, time)
     }
 }
+
+export function storageName(param){
+    return `excel:${param}`
+}
+
+export function clone(obj = {}){
+    return JSON.parse(JSON.stringify(obj))
+}
+
+export function preventDefault(event){
+    event.preventDefault()
+}
