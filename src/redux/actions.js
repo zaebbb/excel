@@ -1,4 +1,12 @@
-import {CHANGE_TEXT, CHANGE_STYLES, TABLE_RESIZE, APPLY_STYLES, CHANGE_TITLE, CURRENT_COLOR} from '@/redux/types';
+import {
+    CHANGE_TEXT,
+    CHANGE_STYLES,
+    TABLE_RESIZE,
+    APPLY_STYLES,
+    CHANGE_TITLE,
+    CURRENT_COLOR,
+    UPDATE_DATE,
+} from '@/redux/types';
 
 // Action Creator
 export function tableResize(data) {
@@ -41,5 +49,11 @@ export function changeColor(data){
     return {
         type: CURRENT_COLOR,
         data,
+    }
+}
+
+export function updateDate(){
+    return {
+        type: UPDATE_DATE,
     }
 }

@@ -3,6 +3,7 @@ import {$dev} from '@core/dom';
 import * as actions from '@/redux/actions';
 import {DEFAULT_TITLE} from '@/constants';
 import {debounce} from '@core/utils';
+import {ActiveRoute} from '@core/router/ActiveRoute';
 
 export class Header extends ExcelComponent{
     static className = 'excel__header'
@@ -10,7 +11,7 @@ export class Header extends ExcelComponent{
     constructor($root, options){
         super($root, {
             name: 'Header',
-            listeners: ['input'],
+            listeners: ['input', 'click'],
             ...options,
         })
     }
@@ -21,18 +22,17 @@ export class Header extends ExcelComponent{
 
     toHTML(){
         const title = this.store.getState().title || DEFAULT_TITLE
-        console.log(this.store.getState())
         return `<input type="text" id="title_table" class="excel__header--input" value="${title}">
 
             <div class="excel__header--buttons">
-                <button class="excel__header--button button">
-                        <span class="material-symbols-outlined">
+                <button class="excel__header--button button" data-type="logout">
+                        <span class="material-symbols-outlined" data-type="logout">
                             logout
                         </span>
                 </button> 
 
-                <button class="excel__header--button button">
-                        <span class="material-symbols-outlined">
+                <button class="excel__header--button button" data-type="remove">
+                        <span class="material-symbols-outlined" data-type="remove">
                             delete
                         </span>
                 </button>
@@ -43,5 +43,15 @@ export class Header extends ExcelComponent{
     onInput(event){
         const $target = $dev(event.target)
         this.$dispatch(actions.changeTitle($target.text()))
+    }
+
+    onClick(event){
+        const $target = $dev(event.target);
+        if ($target.dataset.type === 'logout'){
+            ActiveRoute.navigate('')
+        } else if ($target.dataset.type === 'remove'){
+            localStorage.removeItem(`excel:${ActiveRoute.param}`)
+            ActiveRoute.navigate('')
+        }
     }
 }

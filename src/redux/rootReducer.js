@@ -1,4 +1,12 @@
-import {CHANGE_TEXT, CHANGE_STYLES, TABLE_RESIZE, APPLY_STYLES, CHANGE_TITLE, CURRENT_COLOR} from '@/redux/types';
+import {
+    CHANGE_TEXT,
+    CHANGE_STYLES,
+    TABLE_RESIZE,
+    APPLY_STYLES,
+    CHANGE_TITLE,
+    CURRENT_COLOR,
+    UPDATE_DATE,
+} from '@/redux/types';
 
 // Pure function
 export function rootReducer(state, action){
@@ -40,6 +48,8 @@ export function rootReducer(state, action){
             return {...state, title: action.data}
         case CURRENT_COLOR:
             return {...state, currentColor: action.data}
+        case UPDATE_DATE:
+            return {...state, date: new Date().toJSON()}
         default: return state
     }
 }
