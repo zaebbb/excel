@@ -7,7 +7,7 @@ import {Table} from '@/components/table/Table';
 import {rootReducer} from '@/redux/rootReducer';
 import {storage, debounce, storageName} from '@core/utils';
 import {normalizeInitialState} from '@/redux/initialState';
-import {createStore} from '@core/сreateStore';
+import {createStore} from '@core/store/сreateStore';
 
 export class ExcelPage extends Page{
     getRoot() {
