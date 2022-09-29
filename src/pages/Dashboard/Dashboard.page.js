@@ -1,4 +1,4 @@
-import {Page} from '@core/Page'
+import {Page} from '@core/page/Page'
 import {$dev} from '@core/dom';
 import {createDashboard} from '@/pages/Dashboard/dashboard.template';
 
