@@ -1,6 +1,11 @@
 @import "variables";
 @import "mixins";
 
+::-webkit-scrollbar{
+  width: 0;
+}
+
+
 .excel__table{
   position: absolute;
   left: 0;
